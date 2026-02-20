@@ -81,7 +81,3 @@ class CalculatorListViewController: UITableViewController {
         navigationController?.pushViewController(viewController, animated: true)
     }
 }
-
-extension String {
-    
-}

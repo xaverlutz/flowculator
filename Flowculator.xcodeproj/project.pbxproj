@@ -124,6 +124,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5043B48F2F4880990083416F /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				50F04A402F484F89005F4A71 /* Flowculator */,
@@ -217,6 +218,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				50F04A752F4850BD005F4A71 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				5043B48D2F4880820083416F /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 50F04A3F2F484F89005F4A71 /* Products */;
@@ -279,6 +281,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		5043B48F2F4880990083416F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 5043B48E2F4880990083416F /* SwiftLint */;
+		};
 		50F04A562F484F8D005F4A71 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 50F04A3D2F484F89005F4A71 /* Flowculator */;
@@ -605,6 +611,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5043B48D2F4880820083416F /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lukepistrol/SwiftLintPlugin.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.63.1;
+			};
+		};
 		50F04A752F4850BD005F4A71 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -616,6 +630,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5043B48E2F4880990083416F /* SwiftLint */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5043B48D2F4880820083416F /* XCRemoteSwiftPackageReference "SwiftLintPlugin" */;
+			productName = "plugin:SwiftLint";
+		};
 		50F04A762F4850BD005F4A71 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 50F04A752F4850BD005F4A71 /* XCRemoteSwiftPackageReference "SnapKit" */;

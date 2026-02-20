@@ -194,6 +194,7 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
         }
     }
 
+    // swiftlint:disable identifier_name
     /// Converts a power value from the given unit to the other two power units (kW, kcal/h, HP).
     func convertPower(from unit: PowerUnit, value: String) -> ConversionResult? {
         guard let doubleValue = parseDouble(from: value) else { return nil }
@@ -215,6 +216,7 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
             return ConversionResult(firstConvertion: kw, secondConvertion: kcalh)
         }
     }
+    // swiftlint:enable identifier_name
 
     /// Converts a length value from the given unit to the other two length units (mm, inch, feet).
     func convertLength(from unit: LengthUnit, value: String) -> ConversionResult? {
@@ -227,14 +229,14 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
             return ConversionResult(firstConvertion: inch, secondConvertion: feet)
 
         case .inch:
-            let mm = doubleValue * 2.54 * 10.0
+            let millimeter = doubleValue * 2.54 * 10.0
             let feet = doubleValue / 12.0
-            return ConversionResult(firstConvertion: mm, secondConvertion: feet)
+            return ConversionResult(firstConvertion: millimeter, secondConvertion: feet)
 
         case .feet:
             let inch = doubleValue * 12.0
-            let mm = inch * 2.54 * 10.0
-            return ConversionResult(firstConvertion: inch, secondConvertion: mm)
+            let millimeter = inch * 2.54 * 10.0
+            return ConversionResult(firstConvertion: inch, secondConvertion: millimeter)
         }
     }
 

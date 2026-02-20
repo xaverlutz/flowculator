@@ -227,7 +227,12 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
         }
     }
 
-    private func performCalculation(for type: CalculationType, input1: Double, input2: Double, input3: Double?) -> Double {
+    private func performCalculation( // swiftlint:disable:this cyclomatic_complexity
+        for type: CalculationType,
+        input1: Double,
+        input2: Double,
+        input3: Double?
+    ) -> Double {
         switch type {
         case .displacement:
             // Displacement = Flow Rate / Rotation Speed * 1000
