@@ -48,17 +48,17 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
         return createCard()
     }()
 
-    private lazy var pistonDiameterField = createInputRow(placeholder: String(localized: "cylinder.piston.diameter"), unit: "mm")
-    private lazy var rodDiameterField = createInputRow(placeholder: String(localized: "cylinder.rod.diameter"), unit: "mm")
-    private lazy var pressureField = createInputRow(placeholder: String(localized: "cylinder.working.pressure"), unit: "bar")
-    private lazy var strokeField = createInputRow(placeholder: String(localized: "cylinder.stroke"), unit: "mm")
-    private lazy var flowRateField = createInputRow(placeholder: String(localized: "flow.rate"), unit: "l/min")
+    private lazy var pistonDiameterField = createInputRow(placeholder: String(localized: .cylinderPistonDiameter), unit: "mm")
+    private lazy var rodDiameterField = createInputRow(placeholder: String(localized: .cylinderRodDiameter), unit: "mm")
+    private lazy var pressureField = createInputRow(placeholder: String(localized: .cylinderWorkingPressure), unit: "bar")
+    private lazy var strokeField = createInputRow(placeholder: String(localized: .cylinderStroke), unit: "mm")
+    private lazy var flowRateField = createInputRow(placeholder: String(localized: .flowRate), unit: "l/min")
 
     // MARK: - Calculate Button
 
     private lazy var calculateButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(String(localized: "calculate"), for: .normal)
+        button.setTitle(String(localized: .calculate), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         button.backgroundColor = UIColor.blue
         button.setTitleColor(.white, for: .normal)
@@ -113,7 +113,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
     private func setupView() {
         view.backgroundColor = UIColor.systemGroupedBackground
-        title = String(localized: "hydraulic.cylinder")
+        title = String(localized: .hydraulicCylinder)
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -218,12 +218,12 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
     }
 
     private func createResultSections() {
-        let pistonSide = String(localized: "cylinder.piston.side")
-        let rodSide = String(localized: "cylinder.rod.side")
+        let pistonSide = String(localized: .cylinderPistonSide)
+        let rodSide = String(localized: .cylinderRodSide)
 
         // Area section
         areaSection = ResultSectionView(
-            title: String(localized: "cylinder.area"),
+            title: String(localized: .cylinderArea),
             unit: "cm²",
             pistonLabel: pistonSide,
             rodLabel: rodSide,
@@ -233,7 +233,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
         // Volume section
         volumeSection = ResultSectionView(
-            title: String(localized: "cylinder.stroke.volume"),
+            title: String(localized: .cylinderStrokeVolume),
             unit: "l",
             pistonLabel: pistonSide,
             rodLabel: rodSide,
@@ -243,7 +243,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
         // Force section
         forceSection = ResultSectionView(
-            title: String(localized: "cylinder.force"),
+            title: String(localized: .cylinderForce),
             unit: "kN",
             pistonLabel: pistonSide,
             rodLabel: rodSide,
@@ -253,7 +253,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
         // Time section
         timeSection = ResultSectionView(
-            title: String(localized: "cylinder.stroke.time"),
+            title: String(localized: .cylinderStrokeTime),
             unit: "s",
             pistonLabel: pistonSide,
             rodLabel: rodSide,
@@ -263,7 +263,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
         // Speed section
         speedSection = ResultSectionView(
-            title: String(localized: "cylinder.stroke.speed"),
+            title: String(localized: .cylinderStrokeSpeed),
             unit: "m/s",
             pistonLabel: pistonSide,
             rodLabel: rodSide,
@@ -273,7 +273,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
         // Power section
         powerSection = ResultSectionView(
-            title: String(localized: "cylinder.max.power"),
+            title: String(localized: .cylinderMaxPower),
             unit: "kW",
             pistonLabel: pistonSide,
             rodLabel: nil,
@@ -283,7 +283,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
         // Ratio section
         ratioSection = ResultSectionView(
-            title: String(localized: "cylinder.area.ratio"),
+            title: String(localized: .cylinderAreaRatio),
             unit: "",
             pistonLabel: pistonSide,
             rodLabel: nil,
@@ -365,8 +365,8 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(
-            title: String(localized: "calculate"),
-            style: .done,
+            title: String(localized: .calculate),
+            style: .prominent,
             target: self,
             action: #selector(calculateTapped)
         )
@@ -453,7 +453,7 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: String(localized: "button.ok"), style: .default))
+        alert.addAction(UIAlertAction(title: String(localized: .ok), style: .default))
         present(alert, animated: true)
     }
 
@@ -517,7 +517,7 @@ class ResultSectionView: UIView {
 
     private let differentialHeaderLabel: UILabel = {
         let label = UILabel()
-        label.text = String(localized: "cylinder.differential")
+        label.text = String(localized: .cylinderDifferential)
         label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         label.textColor = UIColor.systemOrange
         label.textAlignment = .center

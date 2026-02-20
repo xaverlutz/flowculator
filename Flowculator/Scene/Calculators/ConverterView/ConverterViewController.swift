@@ -35,7 +35,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
     private lazy var pressureCard: UIView = {
         return createSectionCard(
             icon: "gauge.medium",
-            title: String(localized: "converter.pressure"),
+            title: String(localized: .converterPressure),
             color: UIColor.systemBlue
         )
     }()
@@ -43,7 +43,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
     private lazy var temperatureCard: UIView = {
         return createSectionCard(
             icon: "thermometer.medium",
-            title: String(localized: "converter.temperature"),
+            title: String(localized: .converterTemperature),
             color: UIColor.systemOrange
         )
     }()
@@ -51,7 +51,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
     private lazy var powerCard: UIView = {
         return createSectionCard(
             icon: "bolt.fill",
-            title: String(localized: "converter.power"),
+            title: String(localized: .converterPower),
             color: UIColor.systemYellow
         )
     }()
@@ -59,7 +59,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
     private lazy var lengthCard: UIView = {
         return createSectionCard(
             icon: "ruler",
-            title: String(localized: "converter.length"),
+            title: String(localized: .converterLength),
             color: UIColor.systemGreen
         )
     }()
@@ -67,7 +67,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
     private lazy var spaceCard: UIView = {
         return createSectionCard(
             icon: "cube.fill",
-            title: String(localized: "converter.volume.space"),
+            title: String(localized: .converterVolumeSpace),
             color: UIColor.systemPurple
         )
     }()
@@ -75,7 +75,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
     private lazy var liquidCard: UIView = {
         return createSectionCard(
             icon: "drop.fill",
-            title: String(localized: "converter.liquid.volume"),
+            title: String(localized: .converterLiquidVolume),
             color: UIColor.systemTeal
         )
     }()
@@ -562,7 +562,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
 
     private func showModernAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: String(localized: "button.ok"), style: .default))
+        alert.addAction(UIAlertAction(title: String(localized: .ok), style: .default))
         present(alert, animated: true)
     }
 } // swiftlint:disable:this file_length

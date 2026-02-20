@@ -82,9 +82,9 @@ enum ValidationResult {
     var errorMessage: (title: String, message: String)? {
         switch self {
         case .invalidCharacters:
-            return (String(localized: "error.illegal.characters.title"), String(localized: "error.correct.input"))
+            return (String(localized: .errorIllegalCharactersTitle), String(localized: .errorCorrectInput))
         case .commaFirst:
-            return (String(localized: "error.comma.first.title"), String(localized: "error.correct.input"))
+            return (String(localized: .errorCommaFirstTitle), String(localized: .errorCorrectInput))
         default:
             return nil
         }

@@ -1,25 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "button.ok" : {
-      "comment" : "Button title for OK in alerts",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "OK"
-          }
-        }
-      }
-    },
     "calculate" : {
       "comment" : "Button title for calculate action",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -37,6 +21,7 @@
     },
     "converter.length" : {
       "comment" : "Section title for length conversion card",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -54,6 +39,7 @@
     },
     "converter.liquid.volume" : {
       "comment" : "Section title for liquid volume conversion card",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -71,6 +57,7 @@
     },
     "converter.power" : {
       "comment" : "Section title for power conversion card",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -88,6 +75,7 @@
     },
     "converter.pressure" : {
       "comment" : "Section title for pressure conversion card",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -105,6 +93,7 @@
     },
     "converter.temperature" : {
       "comment" : "Section title for temperature conversion card",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -122,6 +111,7 @@
     },
     "converter.volume.space" : {
       "comment" : "Section title for volume (space) conversion card",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -139,6 +129,7 @@
     },
     "cylinder.area" : {
       "comment" : "Result section title for area",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -156,6 +147,7 @@
     },
     "cylinder.area.ratio" : {
       "comment" : "Result section title for area ratio",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -173,6 +165,7 @@
     },
     "cylinder.differential" : {
       "comment" : "Column header for differential values",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -190,6 +183,7 @@
     },
     "cylinder.force" : {
       "comment" : "Result section title for force",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -207,6 +201,7 @@
     },
     "cylinder.max.power" : {
       "comment" : "Result section title for maximum power",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -224,6 +219,7 @@
     },
     "cylinder.piston.diameter" : {
       "comment" : "Placeholder for piston diameter input field",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -241,6 +237,7 @@
     },
     "cylinder.piston.side" : {
       "comment" : "Column header for piston side values",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -258,6 +255,7 @@
     },
     "cylinder.rod.diameter" : {
       "comment" : "Placeholder for rod diameter input field",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -275,6 +273,7 @@
     },
     "cylinder.rod.side" : {
       "comment" : "Column header for rod side values",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -292,6 +291,7 @@
     },
     "cylinder.stroke" : {
       "comment" : "Placeholder for stroke input field",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -309,6 +309,7 @@
     },
     "cylinder.stroke.speed" : {
       "comment" : "Result section title for stroke speed",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -326,6 +327,7 @@
     },
     "cylinder.stroke.time" : {
       "comment" : "Result section title for stroke time",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -343,6 +345,7 @@
     },
     "cylinder.stroke.volume" : {
       "comment" : "Result section title for stroke volume",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -360,6 +363,7 @@
     },
     "cylinder.working.pressure" : {
       "comment" : "Placeholder for working pressure input field",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -377,6 +381,7 @@
     },
     "displacement" : {
       "comment" : "Calculation type and placeholder: Displacement",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -394,6 +399,7 @@
     },
     "efficiency" : {
       "comment" : "Generic Efficiency label, used as placeholder",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -411,6 +417,7 @@
     },
     "error.comma.first.title" : {
       "comment" : "Error title when comma is at the beginning of input",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -428,6 +435,7 @@
     },
     "error.correct.input" : {
       "comment" : "Error message asking user to correct input",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -445,6 +453,7 @@
     },
     "error.empty.fields.message" : {
       "comment" : "Error message asking user to fill all fields",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -462,6 +471,7 @@
     },
     "error.empty.fields.title" : {
       "comment" : "Error title when required fields are empty",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -479,6 +489,7 @@
     },
     "error.illegal.characters.title" : {
       "comment" : "Error title when input contains illegal characters",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -496,6 +507,7 @@
     },
     "error.invalid.numbers.title" : {
       "comment" : "Error title when input is not a valid number",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -513,6 +525,7 @@
     },
     "error.piston.smaller.title" : {
       "comment" : "Error title when piston diameter is smaller than rod diameter",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -530,6 +543,7 @@
     },
     "flow.rate" : {
       "comment" : "Calculation type and placeholder: Flow Rate",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -547,6 +561,7 @@
     },
     "hydraulic.cylinder" : {
       "comment" : "Navigation title for the Hydraulic Cylinder calculator",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -564,6 +579,7 @@
     },
     "hydraulic.motor" : {
       "comment" : "Navigation title for the Hydraulic Motor calculator",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -579,8 +595,27 @@
         }
       }
     },
+    "ok" : {
+      "comment" : "Button title for OK in alerts",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
     "output.torque" : {
       "comment" : "Calculation type: Output Torque",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -598,6 +633,7 @@
     },
     "performance" : {
       "comment" : "Generic Performance label, used as placeholder",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -615,6 +651,7 @@
     },
     "performance.one" : {
       "comment" : "Calculation type: Performance I",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -632,6 +669,7 @@
     },
     "performance.two" : {
       "comment" : "Calculation type: Performance II",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -649,6 +687,7 @@
     },
     "pressure" : {
       "comment" : "Generic Pressure label, used as placeholder",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -666,6 +705,7 @@
     },
     "rotation.speed" : {
       "comment" : "Calculation type and placeholder: Rotation Speed",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -683,6 +723,7 @@
     },
     "torque" : {
       "comment" : "Generic Torque label, used as calculation type and placeholder",
+      "extractionState" : "manual",
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -143,8 +143,8 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
         switch type {
         case .displacement:
             return InputConfiguration(
-                placeholder1: String(localized: "flow.rate"),
-                placeholder2: String(localized: "rotation.speed"),
+                placeholder1: String(localized: .flowRate),
+                placeholder2: String(localized: .rotationSpeed),
                 placeholder3: nil,
                 unit1: "l/min",
                 unit2: "RPM",
@@ -155,8 +155,8 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
 
         case .flowRate:
             return InputConfiguration(
-                placeholder1: String(localized: "displacement"),
-                placeholder2: String(localized: "rotation.speed"),
+                placeholder1: String(localized: .displacement),
+                placeholder2: String(localized: .rotationSpeed),
                 placeholder3: nil,
                 unit1: "cm³/rev",
                 unit2: "RPM",
@@ -167,8 +167,8 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
 
         case .rotationSpeed:
             return InputConfiguration(
-                placeholder1: String(localized: "displacement"),
-                placeholder2: String(localized: "flow.rate"),
+                placeholder1: String(localized: .displacement),
+                placeholder2: String(localized: .flowRate),
                 placeholder3: nil,
                 unit1: "cm³/rev",
                 unit2: "l/min",
@@ -179,9 +179,9 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
 
         case .outputTorque:
             return InputConfiguration(
-                placeholder1: String(localized: "pressure"),
-                placeholder2: String(localized: "displacement"),
-                placeholder3: String(localized: "efficiency"),
+                placeholder1: String(localized: .pressure),
+                placeholder2: String(localized: .displacement),
+                placeholder3: String(localized: .efficiency),
                 unit1: "bar",
                 unit2: "cm³/rev",
                 unit3: "",
@@ -191,9 +191,9 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
 
         case .performanceI:
             return InputConfiguration(
-                placeholder1: String(localized: "torque"),
-                placeholder2: String(localized: "rotation.speed"),
-                placeholder3: String(localized: "efficiency"),
+                placeholder1: String(localized: .torque),
+                placeholder2: String(localized: .rotationSpeed),
+                placeholder3: String(localized: .efficiency),
                 unit1: "daNm",
                 unit2: "RPM",
                 unit3: "",
@@ -203,9 +203,9 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
 
         case .performanceII:
             return InputConfiguration(
-                placeholder1: String(localized: "pressure"),
-                placeholder2: String(localized: "flow.rate"),
-                placeholder3: String(localized: "efficiency"),
+                placeholder1: String(localized: .pressure),
+                placeholder2: String(localized: .flowRate),
+                placeholder3: String(localized: .efficiency),
                 unit1: "bar",
                 unit2: "l/min",
                 unit3: "",
@@ -215,9 +215,9 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
 
         case .torque:
             return InputConfiguration(
-                placeholder1: String(localized: "performance"),
-                placeholder2: String(localized: "rotation.speed"),
-                placeholder3: String(localized: "efficiency"),
+                placeholder1: String(localized: .performance),
+                placeholder2: String(localized: .rotationSpeed),
+                placeholder3: String(localized: .efficiency),
                 unit1: "kW",
                 unit2: "RPM",
                 unit3: "",

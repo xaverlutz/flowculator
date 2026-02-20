@@ -20,19 +20,19 @@ class CalculatorListViewController: UITableViewController {
 
     private lazy var calculators: [Calculator] = [
         Calculator(
-            title: String(localized: "unit.converter"),
+            title: String(localized: .unitConverter),
             icon: "arrow.left.arrow.right",
             color: .systemBlue,
             makeViewController: { ConverterViewController() }
         ),
         Calculator(
-            title: String(localized: "hydraulic.cylinder"),
+            title: String(localized: .hydraulicCylinder),
             icon: "cylinder",
             color: .systemOrange,
             makeViewController: { CylinderCalculatorViewController() }
         ),
         Calculator(
-            title: String(localized: "hydraulic.motor"),
+            title: String(localized: .hydraulicMotor),
             icon: "gear",
             color: .systemGreen,
             makeViewController: { MotorCalculatorViewController() }
@@ -80,4 +80,8 @@ class CalculatorListViewController: UITableViewController {
         viewController.title = calculator.title
         navigationController?.pushViewController(viewController, animated: true)
     }
+}
+
+extension String {
+    
 }

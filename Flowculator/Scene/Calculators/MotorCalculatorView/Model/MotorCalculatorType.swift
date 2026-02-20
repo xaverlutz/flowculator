@@ -22,13 +22,13 @@ enum CalculationType: Int, CaseIterable {
     /// Title of the calculation type.
     var title: String {
         switch self {
-        case .displacement: return String(localized: "displacement")
-        case .flowRate: return String(localized: "flow.rate")
-        case .rotationSpeed: return String(localized: "rotation.speed")
-        case .outputTorque: return String(localized: "output.torque")
-        case .performanceI: return String(localized: "performance.one")
-        case .performanceII: return String(localized: "performance.two")
-        case .torque: return String(localized: "torque")
+        case .displacement: return String(localized: .displacement)
+        case .flowRate: return String(localized: .flowRate)
+        case .rotationSpeed: return String(localized: .rotationSpeed)
+        case .outputTorque: return String(localized: .outputTorque)
+        case .performanceI: return String(localized: .performanceOne)
+        case .performanceII: return String(localized: .performanceTwo)
+        case .torque: return String(localized: .torque)
         }
     }
 }
@@ -72,9 +72,9 @@ enum InputValidationResult {
     var errorMessage: (title: String, message: String)? {
         switch self {
         case .emptyFields:
-            return (String(localized: "error.empty.fields.title"), String(localized: "error.empty.fields.message"))
+            return (String(localized: .errorEmptyFieldsTitle), String(localized: .errorEmptyFieldsMessage))
         case .invalidNumbers:
-            return (String(localized: "error.invalid.numbers.title"), String(localized: "error.correct.input"))
+            return (String(localized: .errorInvalidNumbersTitle), String(localized: .errorCorrectInput))
         case .valid:
             return nil
         }

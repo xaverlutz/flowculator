@@ -62,11 +62,11 @@ enum CylinderValidationResult {
     var errorMessage: (title: String, message: String)? {
         switch self {
         case .emptyFields:
-            return (String(localized: "error.empty.fields.title"), String(localized: "error.empty.fields.message"))
+            return (String(localized: .errorEmptyFieldsTitle), String(localized: .errorEmptyFieldsMessage))
         case .invalidNumbers:
-            return (String(localized: "error.invalid.numbers.title"), String(localized: "error.correct.input"))
+            return (String(localized: .errorInvalidNumbersTitle), String(localized: .errorCorrectInput))
         case .rodLargerThanPiston:
-            return (String(localized: "error.piston.smaller.title"), String(localized: "error.correct.input"))
+            return (String(localized: .errorPistonSmallerTitle), String(localized: .errorCorrectInput))
         case .valid:
             return nil
         }

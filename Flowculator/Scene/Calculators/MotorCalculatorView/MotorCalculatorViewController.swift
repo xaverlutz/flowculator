@@ -81,7 +81,7 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
     private lazy var calculationTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = String(localized: "displacement")
+        label.text = String(localized: .displacement)
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         label.textColor = UIColor.systemOrange
         return label
@@ -94,7 +94,7 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
     }()
 
     private lazy var input1TextField: UITextField = {
-        let textField = createTextField(placeholder: String(localized: "flow.rate"))
+        let textField = createTextField(placeholder: String(localized: .flowRate))
         return textField
     }()
 
@@ -108,7 +108,7 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
     }()
 
     private lazy var input2TextField: UITextField = {
-        let textField = createTextField(placeholder: String(localized: "rotation.speed"))
+        let textField = createTextField(placeholder: String(localized: .rotationSpeed))
         return textField
     }()
 
@@ -171,7 +171,7 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
     private lazy var calculateButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle(String(localized: "calculate"), for: .normal)
+        button.setTitle(String(localized: .calculate), for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         button.backgroundColor = UIColor.blue
         button.setTitleColor(.white, for: .normal)
@@ -206,7 +206,7 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
     private func setupView() {
         view.backgroundColor = UIColor.systemGroupedBackground
-        title = String(localized: "hydraulic.motor")
+        title = String(localized: .hydraulicMotor)
 
         view.addSubview(scrollView)
         scrollView.addSubview(contentView)
@@ -420,8 +420,8 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
         let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let doneButton = UIBarButtonItem(
-            title: String(localized: "calculate"),
-            style: .done,
+            title: String(localized: .calculate),
+            style: .prominent,
             target: self,
             action: #selector(calculateTapped)
         )
@@ -502,7 +502,7 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
     private func showAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: String(localized: "button.ok"), style: .default))
+        alert.addAction(UIAlertAction(title: String(localized: .ok), style: .default))
         present(alert, animated: true)
     }
 
