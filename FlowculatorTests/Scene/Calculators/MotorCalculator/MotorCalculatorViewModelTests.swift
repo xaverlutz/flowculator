@@ -9,9 +9,11 @@ import XCTest
 
 @testable import Flowculator
 
-class MotorCalculatorViewModelTests: XCTestCase {
+final class MotorCalculatorViewModelTests: XCTestCase {
 
     var sut: MotorCalculatorViewModel!
+
+    // MARK: - Test Setup
 
     override func setUp() {
         super.setUp()
@@ -23,78 +25,126 @@ class MotorCalculatorViewModelTests: XCTestCase {
         super.tearDown()
     }
 
+    // MARK: - Validation Tests
+
+    func test_calculate_withEmptyFields_firesValidationError() {
+
+        // - Arrange
+
+        var validationFired = false
+        sut.inputs.selectCalculationType(.displacement)
+        sut.outputs.onValidationError = { _ in validationFired = true }
+
+        // - Act
+
+        sut.inputs.calculate(input1: "", input2: "", input3: nil)
+
+        // - Assert
+
+        XCTAssertTrue(validationFired)
+    }
+
+    func test_calculate_withInvalidNumbers_firesValidationError() {
+
+        // - Arrange
+
+        var validationFired = false
+        sut.inputs.selectCalculationType(.displacement)
+        sut.outputs.onValidationError = { _ in validationFired = true }
+
+        // - Act
+
+        sut.inputs.calculate(input1: "abc", input2: "123", input3: nil)
+
+        // - Assert
+
+        XCTAssertTrue(validationFired)
+    }
+
     // MARK: - Displacement Tests
 
-    func testCalculateDisplacement() {
-        // Given
-        sut.selectCalculationType(.displacement)
-        var result: String?
+    func test_calculate_displacement_returnsCorrectResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.displacement)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "10", input2: "1000", input3: nil)
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "10", input2: "1000", input3: nil)
+
+        // - Assert
+
         XCTAssertNotNil(result)
         XCTAssertEqual(result, "10.00")
     }
 
     // MARK: - Flow Rate Tests
 
-    func testCalculateFlowRate() {
-        // Given
-        sut.selectCalculationType(.flowRate)
-        var result: String?
+    func test_calculate_flowRate_returnsCorrectResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.flowRate)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "10", input2: "1000", input3: nil)
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "10", input2: "1000", input3: nil)
+
+        // - Assert
+
         XCTAssertNotNil(result)
         XCTAssertEqual(result, "10.00")
     }
 
     // MARK: - Rotation Speed Tests
 
-    func testCalculateRotationSpeed() {
-        // Given
-        sut.selectCalculationType(.rotationSpeed)
-        var result: String?
+    func test_calculate_rotationSpeed_returnsCorrectResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.rotationSpeed)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "10", input2: "10", input3: nil)
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "10", input2: "10", input3: nil)
+
+        // - Assert
+
         XCTAssertNotNil(result)
         XCTAssertEqual(result, "1000.00")
     }
 
     // MARK: - Output Torque Tests
 
-    func testCalculateOutputTorque() {
-        // Given
-        sut.selectCalculationType(.outputTorque)
-        var result: String?
+    func test_calculate_outputTorque_returnsCorrectResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.outputTorque)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "100", input2: "50", input3: "0.9")
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "100", input2: "50", input3: "0.9")
+
+        // - Assert
+
         XCTAssertNotNil(result)
         // (100 * 50 * 0.9) / 62.83 / 10 = 7.16
         XCTAssertEqual(result, "7.16")
@@ -102,19 +152,22 @@ class MotorCalculatorViewModelTests: XCTestCase {
 
     // MARK: - Performance I Tests
 
-    func testCalculatePerformanceI() {
-        // Given
-        sut.selectCalculationType(.performanceI)
-        var result: String?
+    func test_calculate_performanceI_returnsCorrectResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.performanceI)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "100", input2: "1000", input3: "0.9")
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "100", input2: "1000", input3: "0.9")
+
+        // - Assert
+
         XCTAssertNotNil(result)
         // 100 * 1000 / 954.9 * 0.9 = 94.25
         XCTAssertEqual(result, "94.25")
@@ -122,19 +175,22 @@ class MotorCalculatorViewModelTests: XCTestCase {
 
     // MARK: - Performance II Tests
 
-    func testCalculatePerformanceII() {
-        // Given
-        sut.selectCalculationType(.performanceII)
-        var result: String?
+    func test_calculate_performanceII_returnsCorrectResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.performanceII)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "100", input2: "50", input3: "0.9")
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "100", input2: "50", input3: "0.9")
+
+        // - Assert
+
         XCTAssertNotNil(result)
         // 50 * 100 / 612 * 0.9 = 7.35
         XCTAssertEqual(result, "7.35")
@@ -142,150 +198,72 @@ class MotorCalculatorViewModelTests: XCTestCase {
 
     // MARK: - Torque Tests
 
-    func testCalculateTorque() {
-        // Given
-        sut.selectCalculationType(.torque)
-        var result: String?
+    func test_calculate_torque_returnsCorrectResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.torque)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "10", input2: "1000", input3: "0.9")
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "10", input2: "1000", input3: "0.9")
+
+        // - Assert
+
         XCTAssertNotNil(result)
         // 10 * 954.9 * 0.9 / 1000 = 8.59
         XCTAssertEqual(result, "8.59")
     }
 
-    // MARK: - Validation Tests
-
-    func testValidation_EmptyFields() {
-
-        // - Arrange
-
-        var validationFired = false
-
-        sut.selectCalculationType(.displacement)
-        sut.onValidationError = { _ in validationFired = true }
-
-        // - Act
-
-        sut.calculate(input1: "", input2: "", input3: nil)
-
-        // - Assert
-
-        XCTAssertTrue(validationFired)
-    }
-
-    func testValidation_InvalidNumbers() {
-
-        // - Arrange
-
-        var validationFired = false
-        sut.selectCalculationType(.displacement)
-
-        sut.onValidationError = { _ in validationFired = true }
-
-        // - Act
-
-        sut.calculate(input1: "abc", input2: "123", input3: nil)
-
-        // - Assert
-
-        XCTAssertTrue(validationFired)
-    }
-
     // MARK: - Configuration Tests
 
-//    func testConfigurationChange_Displacement() {
-//        // Given
-//        var config: InputConfiguration?
-//
-//        sut.onConfigurationChanged = { configuration in
-//            config = configuration
-//        }
-//
-//        // When
-//        sut.selectCalculationType(.displacement)
-//
-//        // Then
-//        XCTAssertNotNil(config)
-//        XCTAssertEqual(config?.unit1, "l/min")
-//        XCTAssertEqual(config?.unit2, "RPM")
-//        XCTAssertEqual(config?.resultUnit, "cm³/rev")
-//        XCTAssertFalse(config?.requiresThirdInput ?? true)
-//    }
+    func test_selectCalculationType_callsCallbacks() {
 
-//    func testConfigurationChange_OutputTorque() {
-//        // Given
-//        var config: InputConfiguration?
-//
-//        sut.onConfigurationChanged = { configuration in
-//            config = configuration
-//        }
-//
-//        // When
-//        sut.selectCalculationType(.outputTorque)
-//
-//        // Then
-//        XCTAssertNotNil(config)
-//        XCTAssertEqual(config?.unit1, "bar")
-//        XCTAssertEqual(config?.unit2, "cm³/rev")
-//        XCTAssertEqual(config?.resultUnit, "daNm")
-//        XCTAssertTrue(config?.requiresThirdInput ?? false)
-//    }
+        // - Arrange
 
-    // MARK: - Calculation Type Tests
-
-//    func testGetAllCalculationTypes() {
-//        // When
-//        let types = sut.getAllCalculationTypes()
-//
-//        // Then
-//        XCTAssertEqual(types.count, 7)
-//        XCTAssertEqual(types[0], .displacement)
-//        XCTAssertEqual(types[6], .torque)
-//    }
-
-    func testSelectCalculationType_CallsCallbacks() {
-        // Given
         var typeChanged = false
         var configChanged = false
 
-        sut.onCalculationTypeChanged = { _ in
+        sut.outputs.onCalculationTypeChanged = { _ in
             typeChanged = true
         }
 
-        sut.onConfigurationChanged = { _ in
+        sut.outputs.onConfigurationChanged = { _ in
             configChanged = true
         }
 
-        // When
-        sut.selectCalculationType(.flowRate)
+        // - Act
 
-        // Then
+        sut.inputs.selectCalculationType(.flowRate)
+
+        // - Assert
+
         XCTAssertTrue(typeChanged)
         XCTAssertTrue(configChanged)
     }
 
     // MARK: - Comma Handling Tests
 
-    func testCalculate_WithCommaDecimalSeparator() {
-        // Given
-        sut.selectCalculationType(.displacement)
-        var result: String?
+    func test_calculate_withCommaDecimalSeparator_returnsResult() {
 
-        sut.onCalculationResult = { calculatedResult in
+        // - Arrange
+
+        sut.inputs.selectCalculationType(.displacement)
+        var result: String?
+        sut.outputs.onCalculationResult = { calculatedResult in
             result = calculatedResult
         }
 
-        // When
-        sut.calculate(input1: "10,5", input2: "1000", input3: nil)
+        // - Act
 
-        // Then
+        sut.inputs.calculate(input1: "10,5", input2: "1000", input3: nil)
+
+        // - Assert
+
         XCTAssertNotNil(result)
     }
 }
