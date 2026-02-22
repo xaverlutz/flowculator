@@ -1,0 +1,721 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "button.ok" : {
+      "comment" : "Button title for OK in alerts",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
+    },
+    "calculate" : {
+      "comment" : "Button title for calculate action",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berechnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calculate"
+          }
+        }
+      }
+    },
+    "converter.length" : {
+      "comment" : "Section title for length conversion card",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Länge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Length"
+          }
+        }
+      }
+    },
+    "converter.liquid.volume" : {
+      "comment" : "Section title for liquid volume conversion card",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flüssigkeitsvolumen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Liquid Volume"
+          }
+        }
+      }
+    },
+    "converter.power" : {
+      "comment" : "Section title for power conversion card",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Power"
+          }
+        }
+      }
+    },
+    "converter.pressure" : {
+      "comment" : "Section title for pressure conversion card",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Druck"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressure"
+          }
+        }
+      }
+    },
+    "converter.temperature" : {
+      "comment" : "Section title for temperature conversion card",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatur"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperature"
+          }
+        }
+      }
+    },
+    "converter.volume.space" : {
+      "comment" : "Section title for volume (space) conversion card",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volumen (Raum)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volume (Space)"
+          }
+        }
+      }
+    },
+    "cylinder.area" : {
+      "comment" : "Result section title for area",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fläche:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area:"
+          }
+        }
+      }
+    },
+    "cylinder.area.ratio" : {
+      "comment" : "Result section title for area ratio",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flächenverhältnis:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area Ratio:"
+          }
+        }
+      }
+    },
+    "cylinder.differential" : {
+      "comment" : "Column header for differential values",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Differential"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Differential"
+          }
+        }
+      }
+    },
+    "cylinder.force" : {
+      "comment" : "Result section title for force",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kraft:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Force:"
+          }
+        }
+      }
+    },
+    "cylinder.max.power" : {
+      "comment" : "Result section title for maximum power",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximale Leistung:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maximum Power:"
+          }
+        }
+      }
+    },
+    "cylinder.piston.diameter" : {
+      "comment" : "Placeholder for piston diameter input field",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolben Ø"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piston Ø"
+          }
+        }
+      }
+    },
+    "cylinder.piston.side" : {
+      "comment" : "Column header for piston side values",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolbenseite"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piston Side"
+          }
+        }
+      }
+    },
+    "cylinder.rod.diameter" : {
+      "comment" : "Placeholder for rod diameter input field",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolbenstange Ø"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rod Ø"
+          }
+        }
+      }
+    },
+    "cylinder.rod.side" : {
+      "comment" : "Column header for rod side values",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stangenseite"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rod Side"
+          }
+        }
+      }
+    },
+    "cylinder.stroke" : {
+      "comment" : "Placeholder for stroke input field",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hub"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroke"
+          }
+        }
+      }
+    },
+    "cylinder.stroke.speed" : {
+      "comment" : "Result section title for stroke speed",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hubgeschwindigkeit:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroke Speed:"
+          }
+        }
+      }
+    },
+    "cylinder.stroke.time" : {
+      "comment" : "Result section title for stroke time",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hubzeit:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroke Time:"
+          }
+        }
+      }
+    },
+    "cylinder.stroke.volume" : {
+      "comment" : "Result section title for stroke volume",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hubvolumen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stroke Volume:"
+          }
+        }
+      }
+    },
+    "cylinder.working.pressure" : {
+      "comment" : "Placeholder for working pressure input field",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Arbeitsdruck"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Working Pressure"
+          }
+        }
+      }
+    },
+    "displacement" : {
+      "comment" : "Calculation type and placeholder: Displacement",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schluckvolumen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Displacement"
+          }
+        }
+      }
+    },
+    "efficiency" : {
+      "comment" : "Generic Efficiency label, used as placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wirkungsgrad"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Efficiency"
+          }
+        }
+      }
+    },
+    "error.comma.first.title" : {
+      "comment" : "Error title when comma is at the beginning of input",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler! Komma am Anfang"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error! Comma first"
+          }
+        }
+      }
+    },
+    "error.correct.input" : {
+      "comment" : "Error message asking user to correct input",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte korrigieren Sie Ihre Eingabe."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please correct your input."
+          }
+        }
+      }
+    },
+    "error.empty.fields.message" : {
+      "comment" : "Error message asking user to fill all fields",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bitte füllen Sie alle Felder aus."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please fill all fields."
+          }
+        }
+      }
+    },
+    "error.empty.fields.title" : {
+      "comment" : "Error title when required fields are empty",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Felder sind leer."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fields are empty."
+          }
+        }
+      }
+    },
+    "error.illegal.characters.title" : {
+      "comment" : "Error title when input contains illegal characters",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fehler! Ungültige Zeichen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error! Illegal Characters"
+          }
+        }
+      }
+    },
+    "error.invalid.numbers.title" : {
+      "comment" : "Error title when input is not a valid number",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine gültige Zahl."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not a valid number."
+          }
+        }
+      }
+    },
+    "error.piston.smaller.title" : {
+      "comment" : "Error title when piston diameter is smaller than rod diameter",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kolben ist kleiner als Kolbenstange."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Piston is smaller than rod."
+          }
+        }
+      }
+    },
+    "flow.rate" : {
+      "comment" : "Calculation type and placeholder: Flow Rate",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ölstrom"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Flow Rate"
+          }
+        }
+      }
+    },
+    "hydraulic.cylinder" : {
+      "comment" : "Navigation title for the Hydraulic Cylinder calculator",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydraulik Zylinder"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydraulic Cylinder"
+          }
+        }
+      }
+    },
+    "hydraulic.motor" : {
+      "comment" : "Navigation title for the Hydraulic Motor calculator",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydraulik Motor"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydraulic Motor"
+          }
+        }
+      }
+    },
+    "output.torque" : {
+      "comment" : "Calculation type: Output Torque",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgebendes Moment"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Output Torque"
+          }
+        }
+      }
+    },
+    "performance" : {
+      "comment" : "Generic Performance label, used as placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance"
+          }
+        }
+      }
+    },
+    "performance.one" : {
+      "comment" : "Calculation type: Performance I",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistung I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance I"
+          }
+        }
+      }
+    },
+    "performance.two" : {
+      "comment" : "Calculation type: Performance II",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leistung II"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Performance II"
+          }
+        }
+      }
+    },
+    "pressure" : {
+      "comment" : "Generic Pressure label, used as placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Druck"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pressure"
+          }
+        }
+      }
+    },
+    "rotation.speed" : {
+      "comment" : "Calculation type and placeholder: Rotation Speed",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drehzahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rotation Speed"
+          }
+        }
+      }
+    },
+    "torque" : {
+      "comment" : "Generic Torque label, used as calculation type and placeholder",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drehmoment"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Torque"
+          }
+        }
+      }
+    },
+    "unit.converter" : {
+      "comment" : "Navigation title for the Unit Converter",
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einheitenrechner"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unit Converter"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.1"
+}
