@@ -13,18 +13,18 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
 
     // MARK: - Properties
 
-    private var viewModel: CylinderCalculatorViewModelType!
+    private var viewModel: CylinderCalculatorViewModelType
 
-    // MARK: - Initialization
+    // MARK: - Life Cycle
 
-    init() {
+    init(viewModel: CylinderCalculatorViewModelType) {
+        self.viewModel = viewModel
+
         super.init(nibName: nil, bundle: nil)
-        self.viewModel = CylinderCalculatorViewModel()
     }
 
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.viewModel = CylinderCalculatorViewModel()
+        fatalError("init(coder:) has not been implemented")
     }
 
     // MARK: - UI Components
@@ -299,8 +299,8 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
             self?.updateResults(results)
         }
 
-        viewModel.outputs.onValidationError = { [weak self] title, message in
-            self?.showAlert(title: title, message: message)
+        viewModel.outputs.onValidationError = { [weak self] error in
+            self?.showAlert(with: error)
         }
     }
 
@@ -451,8 +451,8 @@ class CylinderCalculatorViewController: UIViewController { // swiftlint:disable:
         view.endEditing(true)
     }
 
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    private func showAlert(with error: LocalizedError) {
+        let alert = UIAlertController(title: error.errorDescription, message: error.failureReason, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String(localized: .ok), style: .default))
         present(alert, animated: true)
     }

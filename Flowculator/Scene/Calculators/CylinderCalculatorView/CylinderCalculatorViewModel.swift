@@ -27,7 +27,7 @@ protocol CylinderCalculatorViewModelInputType {
 
 protocol CylinderCalculatorViewModelOutputType: AnyObject {
     var onCalculationResult: ((CylinderResults) -> Void)? { get set }
-    var onValidationError: ((String, String) -> Void)? { get set }
+    var onValidationError: ((LocalizedError) -> Void)? { get set }
 }
 
 // MARK: - Implementation
@@ -43,7 +43,7 @@ class CylinderCalculatorViewModel: CylinderCalculatorViewModelType,
     // MARK: - Outputs
 
     var onCalculationResult: ((CylinderResults) -> Void)?
-    var onValidationError: ((String, String) -> Void)?
+    var onValidationError: ((LocalizedError) -> Void)?
 
     // MARK: - Initialization
 
@@ -71,7 +71,7 @@ class CylinderCalculatorViewModel: CylinderCalculatorViewModelType,
 
         guard validation == .valid else {
             if let error = validation.errorMessage {
-                onValidationError?(error.title, error.message)
+                onValidationError?(error)
             }
             return
         }
@@ -87,7 +87,8 @@ class CylinderCalculatorViewModel: CylinderCalculatorViewModelType,
 
         // Additional validation: piston must be larger than rod
         guard pistonDiameter > rodDiameter else {
-            onValidationError?("Piston is smaller than Pistonrod", "Please correct your Input.")
+            onValidationError?(ValidationError(errorDescription: .errorPistonSmallerTitle,
+                                               failureReason: .errorCorrectInput))
             return
         }
 

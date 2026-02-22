@@ -11,44 +11,52 @@ import Foundation
 // MARK: - Input Data
 
 struct CylinderInputs {
-    let pistonDiameter: Double      // Kolben Ø (mm)
-    let rodDiameter: Double          // Kolbenstange Ø (mm)
-    let pressure: Double             // Arbeitsdruck (bar)
-    let stroke: Double               // Hub (mm)
-    let flowRate: Double             // Ölstrom (l/min)
+    let pistonDiameter: Double
+    let rodDiameter: Double
+    let pressure: Double
+    let stroke: Double
+    let flowRate: Double
 }
 
 // MARK: - Calculation Results
 
 struct CylinderResults {
-    // Areas (Fläche) in cm²
-    let pistonArea: Double           // Kolbenseite
-    let rodSideArea: Double          // Stangenseite
-    let differentialArea: Double     // Differential
 
-    // Stroke volumes (Hubvolumen) in liters
-    let pistonVolume: Double         // Kolbenseite
-    let rodSideVolume: Double        // Stangenseite
-    let differentialVolume: Double   // Differential
+    // - Areas (Fläche) in cm²
 
-    // Forces (Kraft) in kN
-    let pistonForce: Double          // Kolbenseite
-    let rodSideForce: Double         // Stangenseite
-    let differentialForce: Double    // Differential
+    let pistonArea: Double
+    let rodSideArea: Double
+    let differentialArea: Double
 
-    // Stroke times (Hubzeit) in seconds
-    let pistonTime: Double           // Kolbenseite
-    let rodSideTime: Double          // Stangenseite
+    // - Stroke volumes (Hubvolumen) in liters
 
-    // Stroke speeds (Hubgeschwindigkeit) in m/s
-    let pistonSpeed: Double          // Kolbenseite
-    let rodSideSpeed: Double         // Stangenseite
+    let pistonVolume: Double
+    let rodSideVolume: Double
+    let differentialVolume: Double
 
-    // Maximum power (Maximale Leistung) in kW
-    let maxPower: Double             // Kolbenseite
+    // - Forces (Kraft) in kN
 
-    // Area ratio (Flächenverhältnis)
-    let areaRatio: Double            // Kolbenseite/Stangenseite
+    let pistonForce: Double
+    let rodSideForce: Double
+    let differentialForce: Double
+
+    // - Stroke times (Hubzeit) in seconds
+
+    let pistonTime: Double
+    let rodSideTime: Double
+
+    // - Stroke speeds (Hubgeschwindigkeit) in m/s
+
+    let pistonSpeed: Double
+    let rodSideSpeed: Double
+
+    // - Maximum power (Maximale Leistung) in kW
+
+    let maxPower: Double
+
+    // - Area ratio (Flächenverhältnis)
+
+    let areaRatio: Double
 }
 
 // MARK: - Validation Result
@@ -59,14 +67,14 @@ enum CylinderValidationResult {
     case invalidNumbers
     case rodLargerThanPiston
 
-    var errorMessage: (title: String, message: String)? {
+    var errorMessage: LocalizedError? {
         switch self {
         case .emptyFields:
-            return (String(localized: .errorEmptyFieldsTitle), String(localized: .errorEmptyFieldsMessage))
+            return ValidationError(errorDescription: .errorEmptyFieldsTitle, failureReason: .errorEmptyFieldsMessage)
         case .invalidNumbers:
-            return (String(localized: .errorInvalidNumbersTitle), String(localized: .errorCorrectInput))
+            return ValidationError(errorDescription: .errorInvalidNumbersTitle, failureReason: .errorCorrectInput)
         case .rodLargerThanPiston:
-            return (String(localized: .errorPistonSmallerTitle), String(localized: .errorCorrectInput))
+            return ValidationError(errorDescription: .errorPistonSmallerTitle, failureReason: .errorCorrectInput)
         case .valid:
             return nil
         }
