@@ -67,7 +67,7 @@ enum LiquidVolumeUnit: Int {
 // MARK: - Validation Result
 
 /// Represents the result of validating user input for conversion fields.
-enum ValidationResult {
+enum ConverterValidationResult {
     case valid
     case empty
     case invalidCharacters
@@ -79,13 +79,15 @@ enum ValidationResult {
     }
 
     /// Returns a localized error title and message for invalid states, or `nil` if valid.
-    var errorMessage: (title: String, message: String)? {
+    var error: ValidationError? {
         switch self {
         case .invalidCharacters:
-            return (String(localized: .errorIllegalCharactersTitle), String(localized: .errorCorrectInput))
+            return ValidationError(errorDescription: .errorIllegalCharactersTitle, failureReason: .errorCorrectInput)
         case .commaFirst:
-            return (String(localized: .errorCommaFirstTitle), String(localized: .errorCorrectInput))
-        default:
+            return ValidationError(errorDescription: .errorCommaFirstTitle, failureReason: .errorCorrectInput)
+        case .empty:
+            return nil
+        case .valid:
             return nil
         }
     }

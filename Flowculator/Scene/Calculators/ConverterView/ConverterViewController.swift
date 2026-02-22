@@ -13,7 +13,7 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
 
     // MARK: - Properties
 
-    private var viewModel: ConverterViewModelType!
+    private var viewModel: ConverterViewModelType
 
     // MARK: - UI Components
 
@@ -82,36 +82,57 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
 
     // MARK: - Text Fields
 
-    private lazy var ftBar = createModernTextField(tag: PressureUnit.bar.rawValue, placeholder: "0")
-    private lazy var ftMPa = createModernTextField(tag: PressureUnit.mpa.rawValue, placeholder: "0")
-    private lazy var ftPsi = createModernTextField(tag: PressureUnit.psi.rawValue, placeholder: "0")
+    // - Pressure Unit
 
-    private lazy var ftCelsius = createModernTextField(tag: TemperatureUnit.celsius.rawValue, placeholder: "0")
-    private lazy var ftFahren = createModernTextField(tag: TemperatureUnit.fahrenheit.rawValue, placeholder: "0")
-    private lazy var ftKelvin = createModernTextField(tag: TemperatureUnit.kelvin.rawValue, placeholder: "0")
+    private lazy var barTextField = createModernTextField(tag: PressureUnit.bar.rawValue, placeholder: "0")
+    private lazy var mPaTextField = createModernTextField(tag: PressureUnit.mpa.rawValue, placeholder: "0")
+    private lazy var psiTextField = createModernTextField(tag: PressureUnit.psi.rawValue, placeholder: "0")
 
-    private lazy var ftKW = createModernTextField(tag: PowerUnit.kilowatt.rawValue, placeholder: "0")
-    private lazy var ftKcal = createModernTextField(tag: PowerUnit.kilocaloriePerHour.rawValue, placeholder: "0")
-    private lazy var ftPS = createModernTextField(tag: PowerUnit.horsepower.rawValue, placeholder: "0")
+    // - Temperatur Unit
 
-    private lazy var ftMM = createModernTextField(tag: LengthUnit.millimeter.rawValue, placeholder: "0")
-    private lazy var ftInch = createModernTextField(tag: LengthUnit.inch.rawValue, placeholder: "0")
-    private lazy var ftFT = createModernTextField(tag: LengthUnit.feet.rawValue, placeholder: "0")
+    private lazy var celsiusTextField = createModernTextField(tag: TemperatureUnit.celsius.rawValue, placeholder: "0")
+    private lazy var fahrenTextField = createModernTextField(tag: TemperatureUnit.fahrenheit.rawValue, placeholder: "0")
+    private lazy var kelvinTextField = createModernTextField(tag: TemperatureUnit.kelvin.rawValue, placeholder: "0")
 
-    private lazy var ftcm = createModernTextField(tag: VolumeUnit.cubicCentimeter.rawValue, placeholder: "0")
-    private lazy var ftinch3 = createModernTextField(tag: VolumeUnit.cubicInch.rawValue, placeholder: "0")
-    private lazy var ftFT3 = createModernTextField(tag: VolumeUnit.cubicFeet.rawValue, placeholder: "0")
+    // - Power Unit
 
-    private lazy var ftLiter = createModernTextField(tag: LiquidVolumeUnit.liter.rawValue, placeholder: "0")
-    private lazy var ftLiqgal = createModernTextField(tag: LiquidVolumeUnit.usGallon.rawValue, placeholder: "0")
-    private lazy var ftimp = createModernTextField(tag: LiquidVolumeUnit.imperialGallon.rawValue, placeholder: "0")
+    private lazy var kwTextField = createModernTextField(tag: PowerUnit.kilowatt.rawValue, placeholder: "0")
+    private lazy var kcalTextField = createModernTextField(tag: PowerUnit.kilocaloriePerHour.rawValue, placeholder: "0")
+    private lazy var horsePowerTextField = createModernTextField(tag: PowerUnit.horsepower.rawValue, placeholder: "0")
+
+    // - Length Unit
+
+    private lazy var millimeterTextField = createModernTextField(tag: LengthUnit.millimeter.rawValue, placeholder: "0")
+    private lazy var inchTextField = createModernTextField(tag: LengthUnit.inch.rawValue, placeholder: "0")
+    private lazy var feetTextField = createModernTextField(tag: LengthUnit.feet.rawValue, placeholder: "0")
+
+    // - Volume Unit
+
+    private lazy var cubicCentimeterTextField = createModernTextField(tag: VolumeUnit.cubicCentimeter.rawValue, placeholder: "0")
+    private lazy var cubicInchTextField = createModernTextField(tag: VolumeUnit.cubicInch.rawValue, placeholder: "0")
+    private lazy var cubicFeetTextField = createModernTextField(tag: VolumeUnit.cubicFeet.rawValue, placeholder: "0")
+
+    // - Liquid Volume Unit
+
+    private lazy var literTextField = createModernTextField(tag: LiquidVolumeUnit.liter.rawValue, placeholder: "0")
+    private lazy var usGallonTextField = createModernTextField(tag: LiquidVolumeUnit.usGallon.rawValue, placeholder: "0")
+    private lazy var imperialGallonTextField = createModernTextField(tag: LiquidVolumeUnit.imperialGallon.rawValue, placeholder: "0")
 
     // MARK: - Lifecycle
+
+    init(viewModel: ConverterViewModelType) {
+        self.viewModel = viewModel
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        viewModel = ConverterViewModel()
         bindViewModel()
 
         setupView()
@@ -134,8 +155,8 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
             self?.updateTextFields(for: tag, with: result)
         }
 
-        viewModel.outputs.onValidationError = { [weak self] title, message in
-            self?.showModernAlert(title: title, message: message)
+        viewModel.outputs.onValidationError = { [weak self] error in
+            self?.showAlert(with: error)
         }
     }
 
@@ -226,9 +247,9 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
             make.height.equalTo(80)
         }
 
-        stack.addArrangedSubview(createFieldContainer(label: "bar", textField: ftBar))
-        stack.addArrangedSubview(createFieldContainer(label: "MPa", textField: ftMPa))
-        stack.addArrangedSubview(createFieldContainer(label: "psi", textField: ftPsi))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitPressure.bars, textField: barTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitPressure.megapascals, textField: mPaTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitPressure.poundsForcePerSquareInch, textField: psiTextField))
     }
 
     private func setupTemperatureFields() {
@@ -243,9 +264,9 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
             make.height.equalTo(80)
         }
 
-        stack.addArrangedSubview(createFieldContainer(label: "°C", textField: ftCelsius))
-        stack.addArrangedSubview(createFieldContainer(label: "°F", textField: ftFahren))
-        stack.addArrangedSubview(createFieldContainer(label: "K", textField: ftKelvin))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitTemperature.celsius, textField: celsiusTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitTemperature.fahrenheit, textField: fahrenTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitTemperature.kelvin, textField: kelvinTextField))
     }
 
     private func setupPowerFields() {
@@ -260,9 +281,9 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
             make.height.equalTo(80)
         }
 
-        stack.addArrangedSubview(createFieldContainer(label: "kW", textField: ftKW))
-        stack.addArrangedSubview(createFieldContainer(label: "kcal/h", textField: ftKcal))
-        stack.addArrangedSubview(createFieldContainer(label: "PS", textField: ftPS))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitPower.kilowatts, textField: kwTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: Unit(symbol: "kcal/h"), textField: kcalTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitPower.horsepower, textField: horsePowerTextField))
     }
 
     private func setupLengthFields() {
@@ -277,9 +298,9 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
             make.height.equalTo(80)
         }
 
-        stack.addArrangedSubview(createFieldContainer(label: "mm", textField: ftMM))
-        stack.addArrangedSubview(createFieldContainer(label: "inch", textField: ftInch))
-        stack.addArrangedSubview(createFieldContainer(label: "ft", textField: ftFT))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitLength.millimeters, textField: millimeterTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitLength.inches, textField: inchTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitLength.feet, textField: feetTextField))
     }
 
     private func setupSpaceFields() {
@@ -294,9 +315,9 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
             make.height.equalTo(80)
         }
 
-        stack.addArrangedSubview(createFieldContainer(label: "cm³", textField: ftcm))
-        stack.addArrangedSubview(createFieldContainer(label: "inch³", textField: ftinch3))
-        stack.addArrangedSubview(createFieldContainer(label: "ft³", textField: ftFT3))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitVolume.cubicCentimeters, textField: cubicCentimeterTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitVolume.cubicInches, textField: cubicInchTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitVolume.cubicFeet, textField: cubicFeetTextField))
     }
 
     private func setupLiquidFields() {
@@ -311,9 +332,9 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
             make.height.equalTo(80)
         }
 
-        stack.addArrangedSubview(createFieldContainer(label: "l", textField: ftLiter))
-        stack.addArrangedSubview(createFieldContainer(label: "US gal", textField: ftLiqgal))
-        stack.addArrangedSubview(createFieldContainer(label: "imp gal", textField: ftimp))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitVolume.liters, textField: literTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitVolume.gallons, textField: usGallonTextField))
+        stack.addArrangedSubview(createFieldContainer(unit: UnitVolume.imperialGallons, textField: imperialGallonTextField))
     }
 
     // MARK: - Factory Methods
@@ -385,11 +406,11 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
         return textField
     }
 
-    private func createFieldContainer(label: String, textField: UITextField) -> UIView {
+    private func createFieldContainer(unit: Unit, textField: UITextField) -> UIView {
         let container = UIView()
 
         let labelView = UILabel()
-        labelView.text = label
+        labelView.text = unit.symbol
         labelView.font = UIFont.systemFont(ofSize: 13, weight: .medium)
         labelView.textAlignment = .center
         labelView.textColor = .secondaryLabel
@@ -477,91 +498,91 @@ class ConverterViewController: UIViewController { // swiftlint:disable:this type
     private func updatePressureFields(for unit: PressureUnit, with result: ConversionResult) {
         switch unit {
         case .bar:
-            ftMPa.text = result.firstConvertion
-            ftPsi.text = result.secondConvertion
+            mPaTextField.text = result.firstConvertion
+            psiTextField.text = result.secondConvertion
         case .mpa:
-            ftBar.text = result.firstConvertion
-            ftPsi.text = result.secondConvertion
+            barTextField.text = result.firstConvertion
+            psiTextField.text = result.secondConvertion
         case .psi:
-            ftMPa.text = result.firstConvertion
-            ftBar.text = result.secondConvertion
+            mPaTextField.text = result.firstConvertion
+            barTextField.text = result.secondConvertion
         }
     }
 
     private func updateTemperatureFields(for unit: TemperatureUnit, with result: ConversionResult) {
         switch unit {
         case .celsius:
-            ftFahren.text = result.firstConvertion
-            ftKelvin.text = result.secondConvertion
+            fahrenTextField.text = result.firstConvertion
+            kelvinTextField.text = result.secondConvertion
         case .fahrenheit:
-            ftCelsius.text = result.firstConvertion
-            ftKelvin.text = result.secondConvertion
+            celsiusTextField.text = result.firstConvertion
+            kelvinTextField.text = result.secondConvertion
         case .kelvin:
-            ftCelsius.text = result.firstConvertion
-            ftFahren.text = result.secondConvertion
+            celsiusTextField.text = result.firstConvertion
+            fahrenTextField.text = result.secondConvertion
         }
     }
 
     private func updatePowerFields(for unit: PowerUnit, with result: ConversionResult) {
         switch unit {
         case .kilowatt:
-            ftKcal.text = result.firstConvertion
-            ftPS.text = result.secondConvertion
+            kcalTextField.text = result.firstConvertion
+            horsePowerTextField.text = result.secondConvertion
         case .kilocaloriePerHour:
-            ftKW.text = result.firstConvertion
-            ftPS.text = result.secondConvertion
+            kwTextField.text = result.firstConvertion
+            horsePowerTextField.text = result.secondConvertion
         case .horsepower:
-            ftKW.text = result.firstConvertion
-            ftKcal.text = result.secondConvertion
+            kwTextField.text = result.firstConvertion
+            kcalTextField.text = result.secondConvertion
         }
     }
 
     private func updateLengthFields(for unit: LengthUnit, with result: ConversionResult) {
         switch unit {
         case .millimeter:
-            ftInch.text = result.firstConvertion
-            ftFT.text = result.secondConvertion
+            inchTextField.text = result.firstConvertion
+            feetTextField.text = result.secondConvertion
         case .inch:
-            ftMM.text = result.firstConvertion
-            ftFT.text = result.secondConvertion
+            millimeterTextField.text = result.firstConvertion
+            feetTextField.text = result.secondConvertion
         case .feet:
-            ftInch.text = result.firstConvertion
-            ftMM.text = result.secondConvertion
+            inchTextField.text = result.firstConvertion
+            millimeterTextField.text = result.secondConvertion
         }
     }
 
     private func updateVolumeFields(for unit: VolumeUnit, with result: ConversionResult) {
         switch unit {
         case .cubicCentimeter:
-            ftFT3.text = result.firstConvertion
-            ftinch3.text = result.secondConvertion
+            cubicFeetTextField.text = result.firstConvertion
+            cubicInchTextField.text = result.secondConvertion
         case .cubicFeet:
-            ftinch3.text = result.firstConvertion
-            ftcm.text = result.secondConvertion
+            cubicInchTextField.text = result.firstConvertion
+            cubicCentimeterTextField.text = result.secondConvertion
         case .cubicInch:
-            ftFT3.text = result.firstConvertion
-            ftcm.text = result.secondConvertion
+            cubicFeetTextField.text = result.firstConvertion
+            cubicCentimeterTextField.text = result.secondConvertion
         }
     }
 
     private func updateLiquidVolumeFields(for unit: LiquidVolumeUnit, with result: ConversionResult) {
         switch unit {
         case .liter:
-            ftLiqgal.text = result.firstConvertion
-            ftimp.text = result.secondConvertion
+            usGallonTextField.text = result.firstConvertion
+            imperialGallonTextField.text = result.secondConvertion
         case .usGallon:
-            ftLiter.text = result.firstConvertion
-            ftimp.text = result.secondConvertion
+            literTextField.text = result.firstConvertion
+            imperialGallonTextField.text = result.secondConvertion
         case .imperialGallon:
-            ftLiter.text = result.firstConvertion
-            ftLiqgal.text = result.secondConvertion
+            literTextField.text = result.firstConvertion
+            usGallonTextField.text = result.secondConvertion
         }
     }
 
-    // MARK: - Modern Alert
+    // MARK: - Show Alert
 
-    private func showModernAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    private func showAlert(with error: LocalizedError) {
+        let alert = UIAlertController(title: error.errorDescription, message: error.failureReason, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String(localized: .ok), style: .default))
         present(alert, animated: true)
     }

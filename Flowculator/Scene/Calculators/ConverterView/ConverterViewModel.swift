@@ -20,17 +20,18 @@ protocol ConverterViewModelInputType {
     ///
     /// This is the main entry point called by the view. It validates the input, determines which
     /// unit enum the tag belongs to, and delegates to the corresponding conversion method.
+    ///
     /// - Parameters:
     ///   - tag: The raw integer tag from the UI control, mapped to one of the unit enums.
     ///   - value: The user-entered input string.
     func convert(tag: Int, value: String)
 }
 
-// Conforms to AnyObject. That tells the compiler it's a reference type,
-// so mutations through a get-only property work fine.
+/// Conforms to AnyObject. That tells the compiler it's a reference type,
+/// so mutations through a get-only property work fine.
 protocol ConverterViewModelOutputType: AnyObject {
     var onConversionResult: ((Int, ConversionResult) -> Void)? { get set }
-    var onValidationError: ((String, String) -> Void)? { get set }
+    var onValidationError: ((LocalizedError) -> Void)? { get set }
 }
 
 // MARK: - Implementation
@@ -46,7 +47,7 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
     // MARK: - Outputs
 
     var onConversionResult: ((Int, ConversionResult) -> Void)?
-    var onValidationError: ((String, String) -> Void)?
+    var onValidationError: ((LocalizedError) -> Void)?
 
     // MARK: - Initialization
 
@@ -60,8 +61,8 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
         let validation = validateInput(value)
 
         guard validation.isValid else {
-            if let error = validation.errorMessage {
-                onValidationError?(error.title, error.message)
+            if let error = validation.error {
+                onValidationError?(error)
             }
             return
         }
@@ -110,37 +111,29 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
     // MARK: - Private Methods
 
     /// Validates a raw input string for use in a conversion.
+    ///
     /// - Parameter text: The user-entered text to validate.
-    /// - Returns: A ``ValidationResult`` indicating whether the input is usable.
-    private func validateInput(_ text: String) -> ValidationResult {
+    ///
+    /// - Returns: A ``ConverterValidationResult`` indicating whether the input is usable.
+    private func validateInput(_ text: String) -> ConverterValidationResult {
         guard !text.isEmpty else {
             return .empty
         }
 
-        if text == "-" {
-            return .empty
-        }
+        // Minus is a valid input at the first place.
+        if text == "-" { return .valid }
 
-        if text == "," {
-            return .commaFirst
-        }
-
-        if !isNumeric(text) {
+        if parseDouble(from: text) != nil {
+            return .valid
+        } else {
             return .invalidCharacters
         }
-
-        return .valid
-    }
-
-    /// Checks whether the text contains only allowed numeric characters (digits, comma, dot, minus).
-    private func isNumeric(_ text: String) -> Bool {
-        let allowedCharacters = CharacterSet(charactersIn: "0123456789,.-")
-        let textCharacterSet = CharacterSet(charactersIn: text)
-        return allowedCharacters.isSuperset(of: textCharacterSet)
     }
 
     /// Parses a `Double` from a user-entered string, handling locale-specific comma decimal separators.
+    ///
     /// - Parameter text: The text to parse.
+    ///
     /// - Returns: The parsed value, or `nil` if parsing fails.
     private func parseDouble(from text: String) -> Double? {
         if text.contains(",") {
@@ -150,7 +143,13 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
         }
     }
 
-    /// Converts a pressure value from the given unit to the other two pressure units (bar, MPa, psi).
+    /// Converts a pressure value from the given unit to the other two ``PressureUnit``.
+    ///
+    /// - Parameters:
+    ///    - unit: The power unit to convert from.
+    ///    - value: Value of the unit to convert.
+    ///
+    /// - Returns: A conversion Result if the value can be parsed to double.
     func convertPressure(from unit: PressureUnit, value: String) -> ConversionResult? {
         guard let doubleValue = parseDouble(from: value) else { return nil }
 
@@ -172,7 +171,13 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
         }
     }
 
-    /// Converts a temperature value from the given unit to the other two temperature units (Celsius, Fahrenheit, Kelvin).
+    /// Converts a temperature value from the given unit to the other two ``TemperatureUnit``.
+    ///
+    /// - Parameters:
+    ///    - unit: The power unit to convert from.
+    ///    - value: Value of the unit to convert.
+    ///
+    /// - Returns: A conversion Result if the value can be parsed to double.
     func convertTemperature(from unit: TemperatureUnit, value: String) -> ConversionResult? {
         guard let doubleValue = parseDouble(from: value) else { return nil }
 
@@ -194,31 +199,41 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
         }
     }
 
-    // swiftlint:disable identifier_name
-    /// Converts a power value from the given unit to the other two power units (kW, kcal/h, HP).
+    /// Converts a power value from the given unit to the other two ``PowerUnit``.
+    ///
+    /// - Parameters:
+    ///    - unit: The power unit to convert from.
+    ///    - value: Value of the unit to convert.
+    ///
+    /// - Returns: A conversion Result if the value can be parsed to double.
     func convertPower(from unit: PowerUnit, value: String) -> ConversionResult? {
         guard let doubleValue = parseDouble(from: value) else { return nil }
 
         switch unit {
         case .kilowatt:
             let kcalh = doubleValue * 1000.0 / 1.163
-            let hp = doubleValue * 1000.0 / 735.49875
-            return ConversionResult(firstConvertion: kcalh, secondConvertion: hp)
+            let horsePower = doubleValue * 1000.0 / 735.49875
+            return ConversionResult(firstConvertion: kcalh, secondConvertion: horsePower)
 
         case .kilocaloriePerHour:
-            let kw = doubleValue * 1.163 / 1000.0
-            let hp = kw * 1000.0 / 735.49875
-            return ConversionResult(firstConvertion: kw, secondConvertion: hp)
+            let killowatt = doubleValue * 1.163 / 1000.0
+            let horsePower = killowatt * 1000.0 / 735.49875
+            return ConversionResult(firstConvertion: killowatt, secondConvertion: horsePower)
 
         case .horsepower:
-            let kw = doubleValue * 735.49875 / 1000.0
-            let kcalh = kw * 1000.0 / 1.163
-            return ConversionResult(firstConvertion: kw, secondConvertion: kcalh)
+            let killowatt = doubleValue * 735.49875 / 1000.0
+            let kcalh = killowatt * 1000.0 / 1.163
+            return ConversionResult(firstConvertion: killowatt, secondConvertion: kcalh)
         }
     }
-    // swiftlint:enable identifier_name
 
-    /// Converts a length value from the given unit to the other two length units (mm, inch, feet).
+    /// Converts a length value from the given unit to the other two ``LengthUnit``.
+    ///
+    /// - Parameters:
+    ///    - unit: The unit to convert from.
+    ///    - value: Value of the unit to convert.
+    ///
+    /// - Returns: A conversion Result if the value can be parsed to double.
     func convertLength(from unit: LengthUnit, value: String) -> ConversionResult? {
         guard let doubleValue = parseDouble(from: value) else { return nil }
 
@@ -240,7 +255,13 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
         }
     }
 
-    /// Converts a volume value from the given unit to the other two volume units (cm3, in3, ft3).
+    /// Converts a volume value from the given unit to the other two ``VolumeUnit``.
+    ///
+    /// - Parameters:
+    ///    - unit: The unit to convert from.
+    ///    - value: Value of the unit to convert.
+    ///
+    /// - Returns: A conversion Result if the value can be parsed to double.
     func convertVolume(from unit: VolumeUnit, value: String) -> ConversionResult? {
         guard let doubleValue = parseDouble(from: value) else { return nil }
 
@@ -262,7 +283,13 @@ class ConverterViewModel: ConverterViewModelType, ConverterViewModelInputType, C
         }
     }
 
-    /// Converts a liquid volume value from the given unit to the other two liquid volume units (L, US gal, Imperial gal).
+    /// Converts a liquid volume value from the given unit to the other two ``LiquidVolumeUnit``.
+    ///
+    /// - Parameters:
+    ///    - unit: The unit to convert from.
+    ///    - value: Value of the unit to convert.
+    ///
+    /// - Returns: A conversion Result if the value can be parsed to double.
     func convertLiquidVolume(from unit: LiquidVolumeUnit, value: String) -> ConversionResult? {
         guard let doubleValue = parseDouble(from: value) else { return nil }
 
