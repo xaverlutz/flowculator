@@ -24,7 +24,7 @@ protocol MotorCalculatorViewModelOutputType: AnyObject {
     var onCalculationTypeChanged: ((CalculationType) -> Void)? { get set }
     var onConfigurationChanged: ((InputConfiguration) -> Void)? { get set }
     var onCalculationResult: ((String) -> Void)? { get set }
-    var onValidationError: ((String, String) -> Void)? { get set }
+    var onValidationError: ((LocalizedError) -> Void)? { get set }
 }
 
 // MARK: - Implementation
@@ -41,7 +41,7 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
     var onCalculationTypeChanged: ((CalculationType) -> Void)?
     var onConfigurationChanged: ((InputConfiguration) -> Void)?
     var onCalculationResult: ((String) -> Void)?
-    var onValidationError: ((String, String) -> Void)?
+    var onValidationError: ((LocalizedError) -> Void)?
 
     // MARK: - Initialization
 
@@ -68,7 +68,7 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
 
         guard validation == .valid else {
             if let error = validation.errorMessage {
-                onValidationError?(error.title, error.message)
+                onValidationError?(error)
             }
             return
         }
@@ -143,84 +143,84 @@ class MotorCalculatorViewModel: MotorCalculatorViewModelType, MotorCalculatorVie
         switch type {
         case .displacement:
             return InputConfiguration(
-                placeholder1: String(localized: .flowRate),
-                placeholder2: String(localized: .rotationSpeed),
-                placeholder3: nil,
-                unit1: "l/min",
-                unit2: "RPM",
-                unit3: nil,
+                firstPlaceholder: String(localized: .flowRate),
+                secondPlaceholder: String(localized: .rotationSpeed),
+                thirdPlaceholder: nil,
+                firstUnit: "l/min",
+                secondUnit: "RPM",
+                thirdUnit: nil,
                 resultUnit: "cm³/rev",
                 isThirdInputRequired: false
             )
 
         case .flowRate:
             return InputConfiguration(
-                placeholder1: String(localized: .displacement),
-                placeholder2: String(localized: .rotationSpeed),
-                placeholder3: nil,
-                unit1: "cm³/rev",
-                unit2: "RPM",
-                unit3: nil,
+                firstPlaceholder: String(localized: .displacement),
+                secondPlaceholder: String(localized: .rotationSpeed),
+                thirdPlaceholder: nil,
+                firstUnit: "cm³/rev",
+                secondUnit: "RPM",
+                thirdUnit: nil,
                 resultUnit: "l/min",
                 isThirdInputRequired: false
             )
 
         case .rotationSpeed:
             return InputConfiguration(
-                placeholder1: String(localized: .displacement),
-                placeholder2: String(localized: .flowRate),
-                placeholder3: nil,
-                unit1: "cm³/rev",
-                unit2: "l/min",
-                unit3: nil,
+                firstPlaceholder: String(localized: .displacement),
+                secondPlaceholder: String(localized: .flowRate),
+                thirdPlaceholder: nil,
+                firstUnit: "cm³/rev",
+                secondUnit: "l/min",
+                thirdUnit: nil,
                 resultUnit: "RPM",
                 isThirdInputRequired: false
             )
 
         case .outputTorque:
             return InputConfiguration(
-                placeholder1: String(localized: .pressure),
-                placeholder2: String(localized: .displacement),
-                placeholder3: String(localized: .efficiency),
-                unit1: "bar",
-                unit2: "cm³/rev",
-                unit3: "",
+                firstPlaceholder: String(localized: .pressure),
+                secondPlaceholder: String(localized: .displacement),
+                thirdPlaceholder: String(localized: .efficiency),
+                firstUnit: "bar",
+                secondUnit: "cm³/rev",
+                thirdUnit: "",
                 resultUnit: "daNm",
                 isThirdInputRequired: true
             )
 
         case .performanceI:
             return InputConfiguration(
-                placeholder1: String(localized: .torque),
-                placeholder2: String(localized: .rotationSpeed),
-                placeholder3: String(localized: .efficiency),
-                unit1: "daNm",
-                unit2: "RPM",
-                unit3: "",
+                firstPlaceholder: String(localized: .torque),
+                secondPlaceholder: String(localized: .rotationSpeed),
+                thirdPlaceholder: String(localized: .efficiency),
+                firstUnit: "daNm",
+                secondUnit: "RPM",
+                thirdUnit: "",
                 resultUnit: "kW",
                 isThirdInputRequired: true
             )
 
         case .performanceII:
             return InputConfiguration(
-                placeholder1: String(localized: .pressure),
-                placeholder2: String(localized: .flowRate),
-                placeholder3: String(localized: .efficiency),
-                unit1: "bar",
-                unit2: "l/min",
-                unit3: "",
+                firstPlaceholder: String(localized: .pressure),
+                secondPlaceholder: String(localized: .flowRate),
+                thirdPlaceholder: String(localized: .efficiency),
+                firstUnit: "bar",
+                secondUnit: "l/min",
+                thirdUnit: "",
                 resultUnit: "kW",
                 isThirdInputRequired: true
             )
 
         case .torque:
             return InputConfiguration(
-                placeholder1: String(localized: .performance),
-                placeholder2: String(localized: .rotationSpeed),
-                placeholder3: String(localized: .efficiency),
-                unit1: "kW",
-                unit2: "RPM",
-                unit3: "",
+                firstPlaceholder: String(localized: .performance),
+                secondPlaceholder: String(localized: .rotationSpeed),
+                thirdPlaceholder: String(localized: .efficiency),
+                firstUnit: "kW",
+                secondUnit: "RPM",
+                thirdUnit: "",
                 resultUnit: "daNm",
                 isThirdInputRequired: true
             )

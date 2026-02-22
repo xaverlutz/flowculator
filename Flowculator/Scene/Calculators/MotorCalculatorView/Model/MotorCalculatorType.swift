@@ -38,22 +38,22 @@ enum CalculationType: Int, CaseIterable {
 struct InputConfiguration {
 
     /// Placeholder of the first textfield.
-    let placeholder1: String
+    let firstPlaceholder: String
 
     /// Placeholder of the second textfield.
-    let placeholder2: String
+    let secondPlaceholder: String
 
     /// Placeholder of the optional third textfield
-    let placeholder3: String?
+    let thirdPlaceholder: String?
 
     /// Unit of the first textfiled.
-    let unit1: String
+    let firstUnit: String
 
     /// Unit of the second textfiled
-    let unit2: String
+    let secondUnit: String
 
     /// Unit of the optional third textfiled
-    let unit3: String?
+    let thirdUnit: String?
 
     /// Unit of the calculation result
     let resultUnit: String
@@ -69,12 +69,12 @@ enum InputValidationResult {
     case emptyFields
     case invalidNumbers
 
-    var errorMessage: (title: String, message: String)? {
+    var errorMessage: ValidationError? {
         switch self {
         case .emptyFields:
-            return (String(localized: .errorEmptyFieldsTitle), String(localized: .errorEmptyFieldsMessage))
+            return ValidationError(errorDescription: .errorEmptyFieldsTitle, failureReason: .errorEmptyFieldsMessage)
         case .invalidNumbers:
-            return (String(localized: .errorInvalidNumbersTitle), String(localized: .errorCorrectInput))
+            return ValidationError(errorDescription: .errorInvalidNumbersTitle, failureReason: .errorCorrectInput)
         case .valid:
             return nil
         }

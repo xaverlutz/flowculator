@@ -13,24 +13,20 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
     // MARK: - Properties
 
-    private var viewModel: MotorCalculatorViewModelType!
+    private var viewModel: MotorCalculatorViewModelType
 
-    // MARK: - Initialization
+    // MARK: - Life Cycle
 
-    // - Programmatic
+    init(viewModel: MotorCalculatorViewModelType) {
+        self.viewModel = viewModel
 
-    init() {
         super.init(nibName: nil, bundle: nil)
-        self.viewModel = MotorCalculatorViewModel()
     }
-
-    // - Storyboard
-
+    
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        self.viewModel = MotorCalculatorViewModel()
+        fatalError("init(coder:) has not been implemented")
     }
-
+    
     // MARK: - UI Components
 
     private lazy var scrollView: UIScrollView = {
@@ -361,8 +357,8 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
             self?.resultLabel.text = result
         }
 
-        viewModel.outputs.onValidationError = { [weak self] title, message in
-            self?.showAlert(title: title, message: message)
+        viewModel.outputs.onValidationError = { [weak self] error in
+            self?.showAlert(with: error)
         }
     }
 
@@ -442,14 +438,14 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
     private func updateConfiguration(_ config: InputConfiguration) {
         // Update placeholders
-        input1TextField.placeholder = config.placeholder1
-        input2TextField.placeholder = config.placeholder2
-        input3TextField.placeholder = config.placeholder3 ?? ""
+        input1TextField.placeholder = config.firstPlaceholder
+        input2TextField.placeholder = config.secondPlaceholder
+        input3TextField.placeholder = config.thirdPlaceholder ?? ""
 
         // Update units
-        unit1Label.text = config.unit1
-        unit2Label.text = config.unit2
-        unit3Label.text = config.unit3 ?? ""
+        unit1Label.text = config.firstUnit
+        unit2Label.text = config.secondUnit
+        unit3Label.text = config.thirdUnit ?? ""
         resultUnitLabel.text = config.resultUnit
 
         // Enable/disable third input
@@ -500,8 +496,8 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
         scrollView.scrollIndicatorInsets = .zero
     }
 
-    private func showAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    private func showAlert(with error: LocalizedError) {
+        let alert = UIAlertController(title: error.errorDescription, message: error.failureReason, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: String(localized: .ok), style: .default))
         present(alert, animated: true)
     }
