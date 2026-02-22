@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "CF88F231-FB3F-49D1-AFC9-9DEE2B4B11D0",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Flowculator.xcodeproj",
+        "identifier" : "50F04A532F484F8D005F4A71",
+        "name" : "FlowculatorTests"
+      }
+    }
+  ],
+  "version" : 1
+}

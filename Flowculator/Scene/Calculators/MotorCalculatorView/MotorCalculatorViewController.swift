@@ -22,11 +22,11 @@ class MotorCalculatorViewController: UIViewController { // swiftlint:disable:thi
 
         super.init(nibName: nil, bundle: nil)
     }
-    
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: - UI Components
 
     private lazy var scrollView: UIScrollView = {

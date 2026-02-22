@@ -36,7 +36,7 @@ final class ConverterViewModelTests: XCTestCase {
         var conversionFired = false
         var validationFired = false
         sut.outputs.onConversionResult = { _, _ in conversionFired = true }
-        sut.outputs.onValidationError = { _, _ in validationFired = true }
+        sut.outputs.onValidationError = { _ in validationFired = true }
 
         // - Act
 
@@ -56,7 +56,7 @@ final class ConverterViewModelTests: XCTestCase {
         var conversionFired = false
         var validationFired = false
         sut.outputs.onConversionResult = { _, _ in conversionFired = true }
-        sut.outputs.onValidationError = { _, _ in validationFired = true }
+        sut.outputs.onValidationError = { _ in validationFired = true }
 
         // - Act
 
@@ -75,9 +75,9 @@ final class ConverterViewModelTests: XCTestCase {
         let tag = PressureUnit.bar.rawValue
         var errorTitle: String?
         var errorMessage: String?
-        sut.outputs.onValidationError = { title, message in
-            errorTitle = title
-            errorMessage = message
+        sut.outputs.onValidationError = { error in
+            errorTitle = error.errorDescription
+            errorMessage = error.failureReason
         }
 
         // - Act
@@ -97,9 +97,9 @@ final class ConverterViewModelTests: XCTestCase {
         let tag = PressureUnit.bar.rawValue
         var errorTitle: String?
         var errorMessage: String?
-        sut.outputs.onValidationError = { title, message in
-            errorTitle = title
-            errorMessage = message
+        sut.outputs.onValidationError = { error in
+            errorTitle = error.errorDescription
+            errorMessage = error.failureReason
         }
 
         // - Act
@@ -394,9 +394,9 @@ final class ConverterViewModelTests: XCTestCase {
         let tag = PressureUnit.bar.rawValue
         var receivedTitle: String?
         var receivedMessage: String?
-        sut.outputs.onValidationError = { title, message in
-            receivedTitle = title
-            receivedMessage = message
+        sut.outputs.onValidationError = { error in
+            receivedTitle = error.errorDescription
+            receivedMessage = error.failureReason
         }
 
         // - Act
@@ -417,7 +417,7 @@ final class ConverterViewModelTests: XCTestCase {
         var conversionFired = false
         var validationFired = false
         sut.outputs.onConversionResult = { _, _ in conversionFired = true }
-        sut.outputs.onValidationError = { _, _ in validationFired = true }
+        sut.outputs.onValidationError = { _ in validationFired = true }
 
         // - Act
 
