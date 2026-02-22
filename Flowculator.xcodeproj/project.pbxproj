@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		50A98F192F4B5A86000E3581 /* FlowculatorUnitTests.xctestplan in Resources */ = {isa = PBXBuildFile; fileRef = 50A98F182F4B5A86000E3581 /* FlowculatorUnitTests.xctestplan */; };
 		50F04A772F4850BD005F4A71 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 50F04A762F4850BD005F4A71 /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -29,7 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		50A98F182F4B5A86000E3581 /* FlowculatorUnitTests.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = FlowculatorUnitTests.xctestplan; sourceTree = "<group>"; };
 		50F04A3E2F484F89005F4A71 /* Flowculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flowculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F04A542F484F8D005F4A71 /* FlowculatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlowculatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50F04A5E2F484F8D005F4A71 /* FlowculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlowculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -95,7 +93,6 @@
 		50F04A352F484F89005F4A71 = {
 			isa = PBXGroup;
 			children = (
-				50A98F182F4B5A86000E3581 /* FlowculatorUnitTests.xctestplan */,
 				50F04A402F484F89005F4A71 /* Flowculator */,
 				50F04A572F484F8D005F4A71 /* FlowculatorTests */,
 				50F04A612F484F8D005F4A71 /* FlowculatorUITests */,
@@ -240,7 +237,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50A98F192F4B5A86000E3581 /* FlowculatorUnitTests.xctestplan in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
