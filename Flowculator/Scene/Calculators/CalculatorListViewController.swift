@@ -23,19 +23,19 @@ class CalculatorListViewController: UITableViewController {
             title: String(localized: .unitConverter),
             icon: "arrow.left.arrow.right",
             color: .systemBlue,
-            makeViewController: { ConverterViewController() }
+            makeViewController: { ConverterViewController(viewModel: ConverterViewModel()) }
         ),
         Calculator(
             title: String(localized: .hydraulicCylinder),
             icon: "cylinder",
             color: .systemOrange,
-            makeViewController: { CylinderCalculatorViewController() }
+            makeViewController: { CylinderCalculatorViewController(viewModel: CylinderCalculatorViewModel()) }
         ),
         Calculator(
             title: String(localized: .hydraulicMotor),
             icon: "gear",
             color: .systemGreen,
-            makeViewController: { MotorCalculatorViewController() }
+            makeViewController: { MotorCalculatorViewController(viewModel: MotorCalculatorViewModel()) }
         )
     ]
 
